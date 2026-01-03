@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" page-range-format="expanded" default-locale="uk-UA">
-  <!-- This style was edited with the Visual CSL Editor (https://editor.citationstyles.org/visualEditor/) -->
   <info>
-    <title>DSTU-8302:2015-mpa</title>
-    <title-short>ДСТУ 8302:2015</title-short>
+    <title>ДСТУ 8302:2015 (Українська)</title>
+    <title-short>DSTU 8302:2015</title-short>
     <id>http://www.zotero.org/styles/dstu-8302-2015</id>
     <link rel="self" href="http://www.zotero.org/styles/dstu-8302-2015"/>
+    <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
     <author>
       <name>Maksym PANTIN</name>
-      <email>max.pantin.work@outlook.com</email>
-      <uri>https://www.linkedin.com/in/maksym-pantin-67615084</uri>
+      <uri>https://orcid.org/0000-0003-3394-6030</uri>
     </author>
     <category citation-format="numeric"/>
     <category field="generic-base"/>
-    <updated>2026-01-03T09:50:00+00:00</updated>
+    <updated>2026-01-03T18:53:00+00:00</updated>
   </info>
 
   <locale>
