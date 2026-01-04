@@ -2,7 +2,7 @@
 <style xmlns="http://purl.org/net/xbiblio/csl" class="in-text" version="1.0" page-range-format="expanded" default-locale="uk-UA">
   <info>
     <title>ДСТУ 8302:2015 (Українська)</title>
-    <title-short>DSTU 8302:2015</title-short>
+    <title-short>DSTU 8302:2015 (Ukrainian)</title-short>
     <id>http://www.zotero.org/styles/dstu-8302-2015</id>
     <link rel="self" href="http://www.zotero.org/styles/dstu-8302-2015"/>
     <rights license="http://creativecommons.org/licenses/by-sa/3.0/">This work is licensed under a Creative Commons Attribution-ShareAlike 3.0 License</rights>
@@ -12,39 +12,47 @@
     </author>
     <category citation-format="numeric"/>
     <category field="generic-base"/>
-    <updated>2026-01-03T18:53:00+00:00</updated>
+    <updated>2026-01-04T13:55:00+00:00</updated>
   </info>
 
-  <locale>
+  <locale xml:lang="uk-UA">
     <terms>
       <term name="editor">ред. </term>
       <term name="et-al">та ін.</term>
       <term name="page" form="short">С.</term>
       <term name="number-of-pages"> с.</term>
       <term name="issue" form="short">№ </term>
+
       <term name="editor" form="short">
         <single>Ред. </single>
         <multiple>Ред. </multiple>
       </term>
+
       <term name="translator" form="short">
         <single>Пер. </single>
         <multiple>Пер. </multiple>
       </term>
+
       <term name="cited">цит. за</term>
+
       <term name="editortranslator" form="short">
         <single>Ред. і пер.</single>
         <multiple>Ред. і пер. </multiple>
       </term>
+
       <term name="interview">Інтерв'ю</term>
       <term name="no date">Без дати</term>
+
       <term name="season-01">Весна</term>
       <term name="season-02">Літо</term>
       <term name="season-03">Осінь</term>
       <term name="season-04">Зима</term>
+
       <term name="version">
         <single>Версія: </single>
         <multiple>Версії: </multiple>
       </term>
+
       <term name="version" form="short">вер.</term>
       <term name="in press" form="short">в др.</term>
       <term name="opus" form="short">op.</term>
@@ -53,14 +61,68 @@
     </terms>
   </locale>
 
+  <locale xml:lang="en">
+    <terms>
+      <term name="editor">ed.</term>
+
+      <term name="editor" form="short">
+        <single>Ed.</single>
+        <multiple>Eds.</multiple>
+      </term>
+
+      <term name="translator" form="short">
+        <single>Trans.</single>
+        <multiple>Trans.</multiple>
+      </term>
+
+      <term name="editortranslator" form="short">
+        <single>Ed. and trans.</single>
+        <multiple>Eds. and trans.</multiple>
+      </term>
+
+      <term name="et-al">et al.</term>
+
+      <term name="page" form="short">P.</term>
+      <term name="number-of-pages"> p.</term>
+
+      <term name="issue" form="short">No. </term>
+
+      <term name="cited">cited in</term>
+
+      <term name="interview">Interview</term>
+      <term name="no date">No date</term>
+
+      <term name="season-01">Spring</term>
+      <term name="season-02">Summer</term>
+      <term name="season-03">Autumn</term>
+      <term name="season-04">Winter</term>
+
+      <term name="version">
+        <single>Version: </single>
+        <multiple>Versions: </multiple>
+      </term>
+
+      <term name="version" form="short">ver.</term>
+      <term name="in press" form="short">in press</term>
+
+      <term name="opus" form="short">op.</term>
+
+      <term name="paragraph">Paragraph</term>
+
+      <term name="edition" form="short">ed.</term>
+    </terms>
+  </locale>
+
+  <!-- FIX: language presence checks replaced with locale="en" checks -->
+
   <macro name="author-all">
     <choose>
-      <if match="all" variable="language">
+      <if locale="en" match="any">
         <names variable="author composer director container-author" delimiter=", " suffix=". ">
           <name et-al-min="3" et-al-use-first="3" initialize-with=". " name-as-sort-order="all" sort-separator=" "/>
           <et-al/>
           <substitute>
-            <names variable="editor reviewed-author" prefix="За ред. " suffix=".">
+            <names variable="editor reviewed-author" prefix="Ed. " suffix=".">
               <name et-al-min="3" et-al-use-first="3" initialize-with=". " name-as-sort-order="all"/>
               <et-al/>
             </names>
@@ -72,8 +134,8 @@
           <name et-al-min="3" et-al-use-first="3" initialize-with=". " name-as-sort-order="all" sort-separator=" "/>
           <et-al/>
           <substitute>
-            <names variable="editor reviewed-author" prefix="Ed. " suffix=".">
-              <name et-al-min="3" et-al-use-first="3" initialize-with=". "/>
+            <names variable="editor reviewed-author" prefix="За ред. " suffix=".">
+              <name et-al-min="3" et-al-use-first="3" initialize-with=". " name-as-sort-order="all"/>
               <et-al/>
             </names>
           </substitute>
@@ -84,14 +146,14 @@
 
   <macro name="translator">
     <choose>
-      <if match="any" variable="language">
-        <names variable="translator" delimiter=", " prefix="пер. ">
+      <if locale="en" match="any">
+        <names variable="translator" delimiter=", " prefix="transl. by ">
           <name suffix="." delimiter-precedes-last="never" et-al-min="3" et-al-use-first="3" initialize-with=". " sort-separator=" "/>
           <et-al/>
         </names>
       </if>
       <else>
-        <names variable="translator" delimiter=", " prefix="transl. by ">
+        <names variable="translator" delimiter=", " prefix="пер. ">
           <name suffix="." delimiter-precedes-last="never" et-al-min="3" et-al-use-first="3" initialize-with=". " sort-separator=" "/>
           <et-al/>
         </names>
@@ -101,18 +163,7 @@
 
   <macro name="editor">
     <choose>
-      <if match="any" variable="language">
-        <choose>
-          <if match="any" variable="editor">
-            <text value="ред. "/>
-          </if>
-        </choose>
-        <names variable="editor reviewed-author collection-editor" delimiter=", ">
-          <name/>
-          <et-al/>
-        </names>
-      </if>
-      <else>
+      <if locale="en" match="any">
         <choose>
           <if match="any" variable="editor">
             <text value="ed. "/>
@@ -120,6 +171,17 @@
         </choose>
         <names variable="editor reviewed-author collection-editor" delimiter=", ">
           <name suffix="." delimiter-precedes-last="never" et-al-min="3" et-al-use-first="3" initialize-with=". " sort-separator=" "/>
+          <et-al/>
+        </names>
+      </if>
+      <else>
+        <choose>
+          <if match="any" variable="editor">
+            <text value="ред. "/>
+          </if>
+        </choose>
+        <names variable="editor reviewed-author collection-editor" delimiter=", ">
+          <name/>
           <et-al/>
         </names>
       </else>
@@ -197,11 +259,11 @@
 
   <macro name="number-of-volumes">
     <choose>
-      <if match="any" variable="language">
-        <text value="Т. "/>
+      <if locale="en" match="any">
+        <label suffix=". " variable="volume" form="short"/>
       </if>
       <else>
-        <label suffix=". " variable="volume" form="short"/>
+        <text value="Т. "/>
       </else>
     </choose>
     <text variable="volume"/>
@@ -230,15 +292,15 @@
     <choose>
       <if match="any" variable="volume">
         <choose>
-          <if match="any" variable="language">
+          <if locale="en" match="any">
+            <text value="Vol. "/>
+          </if>
+          <else>
             <choose>
               <if match="any" is-numeric="volume">
                 <text value="Вип. "/>
               </if>
             </choose>
-          </if>
-          <else>
-            <text value="Vol. "/>
           </else>
         </choose>
         <text variable="volume"/>
@@ -269,16 +331,16 @@
 
   <macro name="issue">
     <choose>
-      <if match="any" variable="language">
+      <if locale="en" match="any">
+        <text value="Issue "/>
+        <text variable="issue" suffix=". "/>
+      </if>
+      <else>
         <choose>
           <if match="any" is-numeric="issue">
             <label variable="issue" form="short"/>
           </if>
         </choose>
-        <text variable="issue" suffix=". "/>
-      </if>
-      <else>
-        <text value="Issue "/>
         <text variable="issue" suffix=". "/>
       </else>
     </choose>
@@ -286,11 +348,11 @@
 
   <macro name="page">
     <choose>
-      <if match="any" variable="language">
-        <label suffix=" " variable="page" form="short"/>
+      <if locale="en" match="any">
+        <text value="P. "/>
       </if>
       <else>
-        <text value="P. "/>
+        <label suffix=" " variable="page" form="short"/>
       </else>
     </choose>
     <text variable="page" suffix=". "/>
@@ -299,11 +361,11 @@
   <macro name="number-of-pages">
     <text variable="number-of-pages"/>
     <choose>
-      <if match="any" variable="language">
-        <label suffix=" " variable="number-of-pages"/>
+      <if locale="en" match="any">
+        <text value=" p." suffix=" "/>
       </if>
       <else>
-        <text value=" p." suffix=" "/>
+        <label suffix=" " variable="number-of-pages"/>
       </else>
     </choose>
   </macro>
@@ -317,12 +379,12 @@
         <choose>
           <if match="any" variable="page number-of-pages publisher-place">
             <choose>
-              <if match="all" variable="language">
-                <text variable="URL" prefix="Також доступний за посиланням: " suffix=" "/>
+              <if locale="en" match="any">
+                <text variable="URL" prefix="Also available online, URL: " suffix=" "/>
                 <text macro="if_accessed"/>
               </if>
               <else>
-                <text variable="URL" prefix="Also available online, URL: " suffix=" "/>
+                <text variable="URL" prefix="Також доступний за посиланням: " suffix=" "/>
                 <text macro="if_accessed"/>
               </else>
             </choose>
@@ -343,15 +405,15 @@
     <choose>
       <if match="any" variable="accessed">
         <choose>
-          <if match="any" variable="language">
+          <if locale="en" match="any">
+            <date form="numeric" variable="accessed" prefix="(accessed " suffix=")."/>
+          </if>
+          <else>
             <date delimiter="." variable="accessed" text-case="lowercase" font-variant="normal" prefix="(дата звернення: " suffix=").">
               <date-part name="day" form="numeric-leading-zeros"/>
               <date-part name="month" form="numeric-leading-zeros"/>
               <date-part name="year"/>
             </date>
-          </if>
-          <else>
-            <date form="numeric" variable="accessed" prefix="(accessed " suffix=")."/>
           </else>
         </choose>
       </if>
@@ -471,18 +533,7 @@
     <choose>
       <if type="article book" match="any">
         <choose>
-          <if match="any" variable="language">
-            <choose>
-              <if match="any" variable="volume">
-                <text variable="collection-title" prefix="(Серія &quot;" suffix="&quot;, "/>
-                <text variable="volume" prefix="Т. "/>
-              </if>
-              <else>
-                <text variable="collection-title" prefix="(Серія &quot;" suffix="&quot;)"/>
-              </else>
-            </choose>
-          </if>
-          <else>
+          <if locale="en" match="any">
             <choose>
               <if match="all" variable="volume collection-title">
                 <text variable="collection-title" prefix="(&quot;" suffix="&quot; Series, "/>
@@ -492,16 +543,27 @@
                 <text variable="collection-title" prefix="(&quot;" suffix="&quot; Series)"/>
               </else>
             </choose>
+          </if>
+          <else>
+            <choose>
+              <if match="any" variable="volume">
+                <text variable="collection-title" prefix="(Серія &quot;" suffix="&quot;, "/>
+                <text variable="volume" prefix="Т. "/>
+              </if>
+              <else>
+                <text variable="collection-title" prefix="(Серія &quot;" suffix="&quot;)"/>
+              </else>
+            </choose>
           </else>
         </choose>
       </if>
       <else-if type="article-journal article-magazine article-newspaper entry-dictionary entry-encyclopedia" match="any">
         <choose>
-          <if match="any" variable="language">
-            <text variable="collection-title" prefix="(Серія &quot;" suffix="&quot;). "/>
+          <if locale="en" match="any">
+            <text variable="collection-title" prefix="(&quot;" suffix="&quot; Series)"/>
           </if>
           <else>
-            <text variable="collection-title" prefix="(&quot;" suffix="&quot; Series)"/>
+            <text variable="collection-title" prefix="(Серія &quot;" suffix="&quot;). "/>
           </else>
         </choose>
       </else-if>
@@ -544,7 +606,6 @@
   </macro>
 
   <macro name="SORTING_ORDER_DSTU">
-    <!-- Non-standard terms replaced with literal strings for sorting -->
     <choose>
       <if type="motion_picture broadcast song" match="any" variable="medium">
         <text value="zzzzzzzzzzzzzzzz_30_video"/>
@@ -560,11 +621,11 @@
       </else>
     </choose>
     <choose>
-      <if match="any" variable="language">
-        <text value="20_cyr"/>
+      <if locale="en" match="any">
+        <text value="50_lat"/>
       </if>
       <else>
-        <text value="50_lat"/>
+        <text value="20_cyr"/>
       </else>
     </choose>
     <names variable="author reviewed-author"/>
@@ -588,11 +649,11 @@
     <choose>
       <if type="broadcast motion_picture" match="any">
         <choose>
-          <if variable="language" match="all">
-            <text variable="dimensions" prefix="Тривалість: "/>
+          <if locale="en" match="any">
+            <text variable="dimensions" prefix="Duration: "/>
           </if>
           <else>
-            <text variable="dimensions" prefix="Duration: "/>
+            <text variable="dimensions" prefix="Тривалість: "/>
           </else>
         </choose>
       </if>
@@ -601,29 +662,29 @@
 
   <citation collapse="citation-number">
     <sort>
-        <key variable="citation-number"/>
+      <key variable="citation-number"/>
     </sort>
     <layout delimiter=", " prefix="[" suffix="]">
-        <text variable="citation-number" form="short"/>
-        <choose>
-            <if match="any" variable="locator">
-                <choose>
-                    <if match="any" locator="page">
-                        <text value=", c."/>
-                    </if>
-                    <else-if match="any" locator="volume">
-                        <text value=", т."/>
-                    </else-if>
-                    <else-if match="any" locator="chapter">
-                        <text value=", ч."/>
-                    </else-if>
-                    <else>
-                        <text value=", "/>
-                    </else>
-                </choose>
-                <text variable="locator" prefix=" "/>
+      <text variable="citation-number" form="short"/>
+      <choose>
+        <if match="any" variable="locator">
+          <choose>
+            <if match="any" locator="page">
+              <text value=", c."/>
             </if>
-        </choose>
+            <else-if match="any" locator="volume">
+              <text value=", т."/>
+            </else-if>
+            <else-if match="any" locator="chapter">
+              <text value=", ч."/>
+            </else-if>
+            <else>
+              <text value=", "/>
+            </else>
+          </choose>
+          <text variable="locator" prefix=" "/>
+        </if>
+      </choose>
     </layout>
   </citation>
 
