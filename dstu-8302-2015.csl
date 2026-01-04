@@ -584,7 +584,7 @@
         </choose>
       </if>
       <else-if match="none" is-uncertain-date="event-date">
-        <text value="("/>
+        <text value=" ("/>
       </else-if>
     </choose>
     <choose>
