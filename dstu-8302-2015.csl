@@ -12,7 +12,7 @@
     </author>
     <category citation-format="numeric"/>
     <category field="generic-base"/>
-    <updated>2026-01-04T13:55:00+00:00</updated>
+    <updated>2026-01-04T17:22:00+00:00</updated>
   </info>
 
   <locale xml:lang="uk-UA">
@@ -113,7 +113,51 @@
     </terms>
   </locale>
 
-  <!-- FIX: language presence checks replaced with locale="en" checks -->
+  <locale xml:lang="ru">
+    <terms>
+      <term name="editor">ред. </term>
+      <term name="et-al">и др.</term>
+      <term name="page" form="short">С.</term>
+      <term name="number-of-pages"> с.</term>
+      <term name="issue" form="short">№ </term>
+
+      <term name="editor" form="short">
+        <single>Ред. </single>
+        <multiple>Ред. </multiple>
+      </term>
+
+      <term name="translator" form="short">
+        <single>Пер. </single>
+        <multiple>Пер. </multiple>
+      </term>
+
+      <term name="cited">цит. по</term>
+
+      <term name="editortranslator" form="short">
+        <single>Ред. и пер.</single>
+        <multiple>Ред. и пер. </multiple>
+      </term>
+
+      <term name="interview">Интервью</term>
+      <term name="no date">Без даты</term>
+
+      <term name="season-01">Весна</term>
+      <term name="season-02">Лето</term>
+      <term name="season-03">Осень</term>
+      <term name="season-04">Зима</term>
+
+      <term name="version">
+        <single>Версия: </single>
+        <multiple>Версии: </multiple>
+      </term>
+
+      <term name="version" form="short">вер.</term>
+      <term name="in press" form="short">в печ.</term>
+      <term name="opus" form="short">op.</term>
+      <term name="paragraph">Параграф</term>
+      <term name="edition" form="short">изд.</term>
+    </terms>
+  </locale>
 
   <macro name="author-all">
     <choose>
@@ -129,6 +173,18 @@
           </substitute>
         </names>
       </if>
+      <else-if locale="ru" match="any">
+        <names variable="author composer director container-author" delimiter=", " suffix=". ">
+          <name et-al-min="3" et-al-use-first="3" initialize-with=". " name-as-sort-order="all" sort-separator=" "/>
+          <et-al/>
+          <substitute>
+            <names variable="editor reviewed-author" prefix="Под ред. " suffix=".">
+              <name et-al-min="3" et-al-use-first="3" initialize-with=". " name-as-sort-order="all"/>
+              <et-al/>
+            </names>
+          </substitute>
+        </names>
+      </else-if>
       <else>
         <names variable="author composer director container-author" delimiter=", " suffix=". ">
           <name et-al-min="3" et-al-use-first="3" initialize-with=". " name-as-sort-order="all" sort-separator=" "/>
@@ -383,6 +439,10 @@
                 <text variable="URL" prefix="Also available online, URL: " suffix=" "/>
                 <text macro="if_accessed"/>
               </if>
+              <else-if locale="ru" match="any">
+                <text variable="URL" prefix="Также доступно онлайн, URL: " suffix=" "/>
+                <text macro="if_accessed"/>
+              </else-if>
               <else>
                 <text variable="URL" prefix="Також доступний за посиланням: " suffix=" "/>
                 <text macro="if_accessed"/>
@@ -408,6 +468,13 @@
           <if locale="en" match="any">
             <date form="numeric" variable="accessed" prefix="(accessed " suffix=")."/>
           </if>
+          <else-if locale="ru" match="any">
+            <date delimiter="." variable="accessed" text-case="lowercase" font-variant="normal" prefix="(дата обращения: " suffix=").">
+              <date-part name="day" form="numeric-leading-zeros"/>
+              <date-part name="month" form="numeric-leading-zeros"/>
+              <date-part name="year"/>
+            </date>
+          </else-if>
           <else>
             <date delimiter="." variable="accessed" text-case="lowercase" font-variant="normal" prefix="(дата звернення: " suffix=").">
               <date-part name="day" form="numeric-leading-zeros"/>
@@ -544,6 +611,17 @@
               </else>
             </choose>
           </if>
+          <else-if locale="ru" match="any">
+            <choose>
+              <if match="any" variable="volume">
+                <text variable="collection-title" prefix="(Серия &quot;" suffix="&quot;, "/>
+                <text variable="volume" prefix="Т. "/>
+              </if>
+              <else>
+                <text variable="collection-title" prefix="(Серия &quot;" suffix="&quot;)"/>
+              </else>
+            </choose>
+          </else-if>
           <else>
             <choose>
               <if match="any" variable="volume">
@@ -562,6 +640,9 @@
           <if locale="en" match="any">
             <text variable="collection-title" prefix="(&quot;" suffix="&quot; Series)"/>
           </if>
+          <else-if locale="ru" match="any">
+            <text variable="collection-title" prefix="(Серия &quot;" suffix="&quot;). "/>
+          </else-if>
           <else>
             <text variable="collection-title" prefix="(Серія &quot;" suffix="&quot;). "/>
           </else>
@@ -624,10 +705,14 @@
       <if locale="en" match="any">
         <text value="50_lat"/>
       </if>
+      <else-if locale="ru" match="any">
+        <text value="30_ru"/>
+      </else-if>
       <else>
-        <text value="20_cyr"/>
+        <text value="20_uk"/>
       </else>
     </choose>
+
     <names variable="author reviewed-author"/>
     <text variable="title"/>
   </macro>
@@ -652,6 +737,9 @@
           <if locale="en" match="any">
             <text variable="dimensions" prefix="Duration: "/>
           </if>
+          <else-if locale="ru" match="any">
+            <text variable="dimensions" prefix="Продолжительность: "/>
+          </else-if>
           <else>
             <text variable="dimensions" prefix="Тривалість: "/>
           </else>
