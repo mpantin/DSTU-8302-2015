@@ -12,7 +12,7 @@
     </author>
     <category citation-format="numeric"/>
     <category field="generic-base"/>
-    <updated>2026-01-04T17:22:00+00:00</updated>
+    <updated>2026-01-21T21:41:00+00:00</updated>
   </info>
 
   <locale xml:lang="uk-UA">
@@ -259,7 +259,7 @@
         <text variable="publisher-place"/>
         <choose>
           <if match="any" variable="publisher">
-            <text value=" : "/>
+            <text value=": "/>
           </if>
           <else>
             <choose>
@@ -540,7 +540,7 @@
         <text variable="publisher-place"/>
         <choose>
           <if match="any" variable="publisher">
-            <text value=" : "/>
+            <text value=": "/>
           </if>
           <else>
             <choose>
@@ -665,7 +665,7 @@
         </choose>
       </if>
       <else-if match="none" is-uncertain-date="event-date">
-        <text value=" ("/>
+        <text value="("/>
       </else-if>
     </choose>
     <choose>
@@ -720,11 +720,11 @@
   <macro name="document_type_insert">
     <choose>
       <if type="thesis" match="any">
-        <text value=" : "/>
+        <text value=": "/>
         <text variable="genre"/>
       </if>
       <else-if match="any" variable="medium">
-        <text value=" : "/>
+        <text value=": "/>
         <text variable="medium"/>
       </else-if>
     </choose>
