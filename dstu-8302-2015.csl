@@ -21,6 +21,7 @@
       <term name="et-al">та ін.</term>
       <term name="and others">та ін.</term>
       <term name="page" form="short">С.</term>
+      <term name="page-range-delimiter">–</term>
       <term name="number-of-pages"> с.</term>
       <term name="issue" form="short">№ </term>
 
@@ -120,6 +121,7 @@
       <term name="editor">ред. </term>
       <term name="et-al">и др.</term>
       <term name="page" form="short">С.</term>
+      <term name="page-range-delimiter">–</term>
       <term name="number-of-pages"> с.</term>
       <term name="issue" form="short">№ </term>
 
@@ -406,31 +408,64 @@
 
   <macro name="page">
     <choose>
-      <if locale="en" match="any">
-        <text value="P. "/>
+      <if match="any" variable="page">
+        <choose>
+          <if locale="en" match="any">
+            <text value="P. "/>
+          </if>
+          <else-if locale="ru" match="any">
+            <text value="С. "/>
+          </else-if>
+          <else>
+            <text value="С. "/>
+          </else>
+        </choose>
+        <text variable="page" suffix=". "/>
       </if>
-      <else-if locale="ru" match="any">
-        <text value="С. "/>
-      </else-if>
-      <else>
-        <text value="С. "/>
-      </else>
     </choose>
-    <text variable="page" suffix=". "/>
+  </macro>
+
+  <!-- Article number (MDPI etc.): Zotero Extra -> "number: 216".
+       Used only when the item has no classic pagination. -->
+  <macro name="article-number">
+    <choose>
+      <if match="none" variable="page">
+        <choose>
+          <if match="any" variable="number">
+            <choose>
+              <if locale="en" match="any">
+                <text value="Article "/>
+              </if>
+              <else-if locale="ru" match="any">
+                <text value="Ст. "/>
+              </else-if>
+              <else>
+                <text value="Ст. "/>
+              </else>
+            </choose>
+            <text variable="number" suffix=". "/>
+          </if>
+        </choose>
+      </if>
+    </choose>
   </macro>
 
   <macro name="number-of-pages">
-    <text variable="number-of-pages"/>
     <choose>
-      <if locale="en" match="any">
-        <text value=" p." suffix=" "/>
+      <if match="any" variable="number-of-pages">
+        <text variable="number-of-pages"/>
+        <choose>
+          <if locale="en" match="any">
+            <text value=" p." suffix=" "/>
+          </if>
+          <else-if locale="ru" match="any">
+            <text value=" с." suffix=" "/>
+          </else-if>
+          <else>
+            <text value=" с." suffix=" "/>
+          </else>
+        </choose>
       </if>
-      <else-if locale="ru" match="any">
-        <text value=" с." suffix=" "/>
-      </else-if>
-      <else>
-        <text value=" с." suffix=" "/>
-      </else>
     </choose>
   </macro>
 
@@ -800,6 +835,7 @@
           <text macro="editor" suffix=". "/>
           <text macro="volume-issue-edition_commas_formatted"/>
           <text macro="page"/>
+          <text macro="article-number"/>
           <text macro="Internet-resources"/>
         </if>
         <else-if type="chapter" match="any">
