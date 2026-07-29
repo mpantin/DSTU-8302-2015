@@ -12,7 +12,7 @@
     </author>
     <category citation-format="numeric"/>
     <category field="generic-base"/>
-    <updated>2026-07-26T00:00:00+00:00</updated>
+    <updated>2026-07-29T00:00:00+00:00</updated>
   </info>
 
   <locale xml:lang="uk-UA">
@@ -167,11 +167,11 @@
     <choose>
       <if locale="en" match="any">
         <names variable="author composer director container-author" delimiter=", " suffix=". ">
-          <name et-al-min="3" et-al-use-first="3" initialize-with=". " name-as-sort-order="all" sort-separator=" "/>
+          <name et-al-min="3" et-al-use-first="3" initialize-with=". " name-as-sort-order="all" sort-separator=" " delimiter-precedes-et-al="never"/>
           <et-al/>
           <substitute>
             <names variable="editor reviewed-author" prefix="Ed. " suffix=".">
-              <name et-al-min="3" et-al-use-first="3" initialize-with=". " name-as-sort-order="all"/>
+              <name et-al-min="3" et-al-use-first="3" initialize-with=". " name-as-sort-order="all" delimiter-precedes-et-al="never"/>
               <et-al/>
             </names>
           </substitute>
@@ -179,11 +179,11 @@
       </if>
       <else-if locale="ru" match="any">
         <names variable="author composer director container-author" delimiter=", " suffix=". ">
-          <name et-al-min="3" et-al-use-first="3" initialize-with=". " name-as-sort-order="all" sort-separator=" "/>
+          <name et-al-min="3" et-al-use-first="3" initialize-with=". " name-as-sort-order="all" sort-separator=" " delimiter-precedes-et-al="never"/>
           <et-al/>
           <substitute>
             <names variable="editor reviewed-author" prefix="Под ред. " suffix=".">
-              <name et-al-min="3" et-al-use-first="3" initialize-with=". " name-as-sort-order="all"/>
+              <name et-al-min="3" et-al-use-first="3" initialize-with=". " name-as-sort-order="all" delimiter-precedes-et-al="never"/>
               <et-al/>
             </names>
           </substitute>
@@ -191,11 +191,11 @@
       </else-if>
       <else>
         <names variable="author composer director container-author" delimiter=", " suffix=". ">
-          <name et-al-min="3" et-al-use-first="3" initialize-with=". " name-as-sort-order="all" sort-separator=" "/>
+          <name et-al-min="3" et-al-use-first="3" initialize-with=". " name-as-sort-order="all" sort-separator=" " delimiter-precedes-et-al="never"/>
           <et-al term="and others"/>
           <substitute>
             <names variable="editor reviewed-author" prefix="За ред. " suffix=".">
-              <name et-al-min="3" et-al-use-first="3" initialize-with=". " name-as-sort-order="all"/>
+              <name et-al-min="3" et-al-use-first="3" initialize-with=". " name-as-sort-order="all" delimiter-precedes-et-al="never"/>
               <et-al term="and others"/>
             </names>
           </substitute>
@@ -208,13 +208,13 @@
     <choose>
       <if locale="en" match="any">
         <names variable="translator" delimiter=", " prefix="transl. by ">
-          <name suffix="." delimiter-precedes-last="never" et-al-min="3" et-al-use-first="3" initialize-with=". " sort-separator=" "/>
+          <name suffix="." delimiter-precedes-last="never" et-al-min="3" et-al-use-first="3" initialize-with=". " sort-separator=" " delimiter-precedes-et-al="never"/>
           <et-al/>
         </names>
       </if>
       <else>
         <names variable="translator" delimiter=", " prefix="пер. ">
-          <name suffix="." delimiter-precedes-last="never" et-al-min="3" et-al-use-first="3" initialize-with=". " sort-separator=" "/>
+          <name suffix="." delimiter-precedes-last="never" et-al-min="3" et-al-use-first="3" initialize-with=". " sort-separator=" " delimiter-precedes-et-al="never"/>
           <et-al term="and others"/>
         </names>
       </else>
@@ -230,7 +230,7 @@
           </if>
         </choose>
         <names variable="editor reviewed-author collection-editor" delimiter=", ">
-          <name suffix="." delimiter-precedes-last="never" et-al-min="3" et-al-use-first="3" initialize-with=". " sort-separator=" "/>
+          <name suffix="." delimiter-precedes-last="never" et-al-min="3" et-al-use-first="3" initialize-with=". " sort-separator=" " delimiter-precedes-et-al="never"/>
           <et-al/>
         </names>
       </if>
