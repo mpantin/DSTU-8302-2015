@@ -12,7 +12,7 @@
     </author>
     <category citation-format="numeric"/>
     <category field="generic-base"/>
-    <updated>2026-07-29T00:00:00+00:00</updated>
+    <updated>2026-08-06T00:00:00+00:00</updated>
   </info>
 
   <locale xml:lang="uk-UA">
@@ -833,6 +833,7 @@
           <text macro="container-title" suffix=". "/>
           <text macro="collection-title-series"/>
           <text macro="editor" suffix=". "/>
+          <text macro="year" suffix=". "/>
           <text macro="volume-issue-edition_commas_formatted"/>
           <text macro="page"/>
           <text macro="article-number"/>
